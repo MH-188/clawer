@@ -1,8 +1,8 @@
 package main
 
 import (
-	"clawer/xhs"
 	"fmt"
+	"github.com/MH-188/clawer/xhs"
 )
 
 func main() {
