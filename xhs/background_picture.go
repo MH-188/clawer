@@ -1,10 +1,10 @@
 package xhs
 
 import (
-	"clawer/tools"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/MH-188/clawer/tools"
 	"strings"
 )
 

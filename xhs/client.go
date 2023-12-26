@@ -1,8 +1,8 @@
 package xhs
 
 import (
-	"clawer/network"
 	"fmt"
+	"github.com/MH-188/clawer/network"
 	"net/http"
 )
 
