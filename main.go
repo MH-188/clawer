@@ -7,7 +7,7 @@ import (
 
 func main() {
 	xhsClient := xhs.NewXhsClient()
-	_, err := xhsClient.GetNotePageInfo("")
+	_, err := xhsClient.GetNotePageInfo("http://xhslink.com/80a39x")
 	//err := xhsClient.GetPersonalPageInfo()
 	if err != nil {
 		fmt.Println(err)

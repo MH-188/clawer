@@ -5,7 +5,18 @@ import (
 	"errors"
 	"fmt"
 	"github.com/MH-188/clawer/tools"
+	"math/rand"
 	"strings"
+	"time"
+)
+
+var (
+	xhsServers = []string{
+		"https://sns-img-qc.xhscdn.com",
+		"https://sns-img-hw.xhscdn.com",
+		"https://sns-img-bd.xhscdn.com",
+		"https://sns-img-qn.xhscdn.com",
+	}
 )
 
 type NoteDetail struct {
@@ -64,6 +75,8 @@ func GetBackgroundPicture(respStr string) ([]string, error) {
 		return result, err
 	}
 
+	// 设置种子，一般情况下只需要设置一次种子
+	rand.Seed(time.Now().UnixNano())
 	for _, value := range backGroundResp.Note.NoteDetailMap {
 		for _, image := range value.Note.ImageList {
 			url := image.InfoList[0].Url
@@ -79,7 +92,10 @@ func GetBackgroundPicture(respStr string) ([]string, error) {
 				return result, err
 			}
 			traceId = strArray[0]
-			result = append(result, fmt.Sprintf("https://sns-img-qc.xhscdn.com/%s?imageView2/format/png", traceId))
+			// 生成一个随机整数
+			randomInt := rand.Intn(len(xhsServers)) // 生成0到99之间的随机整数
+			fmt.Println("随机整数:", randomInt)
+			result = append(result, fmt.Sprintf("%s/%s?imageView2/format/png", xhsServers[randomInt], traceId))
 		}
 	}
 	return result, nil
